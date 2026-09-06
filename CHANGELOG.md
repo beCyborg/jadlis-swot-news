@@ -2,7 +2,7 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
-## [Unreleased] — переименование скилла и слияние локальной версии / skill rename and local merge
+## [2.0.0] — 2026-09-07 — переименование скилла и слияние локальной версии / skill rename and local merge
 
 ### Для человека
 - Ежедневный скилл теперь вызывается как `/swot-news:daily-news-swot` — то же имя, что у локальной версии и в расписании.

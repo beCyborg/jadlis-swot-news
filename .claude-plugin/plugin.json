@@ -1,12 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "swot-news",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Собирает батч Kagi News, анализирует его параллельными субагентами через призму личного профиля и пишет дельта-выпуск SWOT в Markdown",
   "author": {
     "name": "beCyborg"
   },
   "repository": "https://github.com/beCyborg/swot-news-plugin",
   "license": "MIT",
-  "keywords": ["news", "swot", "kagi", "briefing", "daily", "analysis", "digest"]
+  "keywords": [
+    "news",
+    "swot",
+    "kagi",
+    "briefing",
+    "daily",
+    "analysis",
+    "digest"
+  ]
 }
