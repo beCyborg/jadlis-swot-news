@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "swot-news",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Собирает батч Kagi News, анализирует его параллельными субагентами через призму личного профиля и пишет дельта-выпуск SWOT в Markdown",
   "author": {
     "name": "beCyborg"
