@@ -4,7 +4,7 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 
 ## Коммиты
 
-- Тема — Conventional Commits на английском: `type(scope): subject`, ≤72 символа. `scope` = `daily`, `setup`, `agents`, `scripts`, `docs`, `ci`.
+- Тема — Conventional Commits на английском: `type(scope): subject`, ≤72 символа. `scope` = `daily` (скилл `skills/daily-news-swot/`), `setup`, `agents`, `scripts`, `docs`, `ci`.
 - Тело двухслойное:
   1. `Что изменилось:` — 1–3 предложения по-русски простым языком, для человека.
   2. `Details (for agents):` — буллеты `Added / Changed / Removed / Migration / Refs` с путями.
@@ -36,7 +36,7 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Разработка
 
 - `scripts/fetch_kagi_api.py` — только стандартная библиотека Python 3.9+; зависимостей не добавлять.
-- Скилл `daily` не задаёт вопросов (`disallowed-tools: AskUserQuestion`) — он ходит по расписанию; вопросы живут только в `setup`.
+- Скилл `daily-news-swot` не задаёт вопросов (`disallowed-tools: AskUserQuestion`) — он ходит по расписанию; вопросы живут только в `setup`.
 - Кластер-файлы в основной контекст не читать: агентам передаются пути.
 - Перед коммитом: `claude plugin validate .` и `claude plugin validate .claude-plugin/marketplace.json`.
 - Язык доков — русский (RU-файл первичен) плюс EN; код, идентификаторы и имена скиллов — английский.
