@@ -1,6 +1,6 @@
 ---
-name: enricher-web
-description: Обогатитель ежедневного SWOT свежими данными из веба через нативный WebSearch. Запускается ТОЛЬКО из скилла swot-news:daily, когда Brave MCP недоступен (enricher.tool = websearch). Формат выхода тот же, что у enricher-brave. Не вызывать вручную.
+name: swot-news-enricher-web
+description: Обогатитель ежедневного SWOT свежими данными из веба через нативный WebSearch. Запускается ТОЛЬКО из скилла swot-news:daily-news-swot, когда Brave MCP недоступен (enricher.tool = websearch). Формат выхода тот же, что у swot-news-enricher. Не вызывать вручную.
 tools: WebSearch, WebFetch, Read
 model: opus
 ---

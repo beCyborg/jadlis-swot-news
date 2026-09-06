@@ -2,6 +2,21 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [Unreleased] — переименование скилла и слияние локальной версии / skill rename and local merge
+
+### Для человека
+- Ежедневный скилл теперь вызывается как `/swot-news:daily-news-swot` — то же имя, что у локальной версии и в расписании.
+- Агенты переименованы в `swot-news-analyst` / `swot-news-enricher` — тоже совпадают с локальными.
+- Обогатитель научился переключаться на Exa, когда у Brave кончился лимит.
+
+### For agents
+- Changed: `skills/daily/` → `skills/daily-news-swot/` (`git mv`), `name: daily` → `name: daily-news-swot`; ссылки обновлены в `README.md`, `README.en.md`, `docs/УСТАНОВКА.md`, `skills/setup/SKILL.md`, `skills/setup/assets/SWOT.md`, `CLAUDE.md`.
+- Changed: `agents/analyst.md` → `agents/swot-news-analyst.md`, `agents/enricher-brave.md` → `agents/swot-news-enricher.md`, `agents/enricher-web.md` → `agents/swot-news-enricher-web.md`; `subagent_type` в `skills/daily-news-swot/SKILL.md` теперь без префикса плагина.
+- Changed: `agents/swot-news-enricher.md` — фоллбэк на `mcp__exa__web_search_exa` при 402/403 от Brave.
+- Added: `skills/daily-news-swot/references/gotchas.md` — ловушки Kagi News API (перенос из локальной версии).
+- Added: `scripts/fix_swot_folder_order.py` — порядок папки выпусков в Obsidian-плагине manual-sorting; фаза 7.5, выполняется только при `obsidian.enabled = true`.
+- Breaking: старое имя команды `/swot-news:daily` и старые `subagent_type` больше не работают.
+
 ## [1.0.1] — 2026-09-06 — README RU/EN, CHANGELOG-формат, gitleaks в CI / bilingual README, changelog format, gitleaks in CI
 
 ### Для человека

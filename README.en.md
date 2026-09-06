@@ -92,7 +92,7 @@ Detailed install and troubleshooting — **[docs/УСТАНОВКА.md](docs/У�
 Three typical scenarios:
 
 1. **First run** — `/swot-news:setup`. It inspects the folder, interviews you about your profile, walks the Kagi topic catalogue, balances clusters and creates the structure. Without a config, `daily` prints one line and creates nothing.
-2. **Daily issue** — `/swot-news:daily`. Collect → analyse → issue → digest in chat. It asks no questions, so it is safe on a schedule; `--force` overwrites today's issue.
+2. **Daily issue** — `/swot-news:daily-news-swot`. Collect → analyse → issue → digest in chat. It asks no questions, so it is safe on a schedule; `--force` overwrites today's issue.
 3. **Adjust a setting** — `/swot-news:setup --recheck` (rebuild the category list, the Kagi catalogue changes) or `/swot-news:setup --profile` (profile only, categories untouched).
 
 Every config field — **[docs/НАСТРОЙКА.md](docs/НАСТРОЙКА.md)** (Russian).
