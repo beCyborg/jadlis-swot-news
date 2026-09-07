@@ -104,6 +104,6 @@ What it needs and what it does not do:
 
 ## Data and licences
 
-- Plugin code — MIT (`LICENSE`).
+- Plugin code — no license: read and use it personally; all rights reserved.
 - Kagi News data — **CC BY-NC 4.0**: non-commercial use with attribution. The attribution is inserted into every issue footer automatically; do not remove it.
 - The Kagi News API is public and marked beta — it may change. If it is unavailable the script returns a clear error and the run ends in a single line.
