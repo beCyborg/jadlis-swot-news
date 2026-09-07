@@ -8,7 +8,7 @@ A Claude Code plugin: it takes the fresh [Kagi News](https://news.kagi.com) batc
 
 A feed gives you emotion, not a position: an important story and *your* story are different stories. As long as an event has nothing to do with you, it stays somebody else's importance — and by the evening it leaves neither a decision nor a trace.
 
-The plugin puts selection and analysis between the feed and you (tag `swot-news--v1.0.1`):
+The plugin puts selection and analysis between the feed and you (tag `swot-news--v2.0.1`):
 
 - Reads only the topics you picked at onboarding out of the live Kagi catalogue (the skill quotes roughly 165 topics; a valid pick is 12–60, a comfortable one 25–40).
 - Spreads them across 1–4 clusters and starts one analyst per cluster plus an enricher — in parallel, in a single message.
