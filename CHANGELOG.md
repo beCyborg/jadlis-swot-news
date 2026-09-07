@@ -12,7 +12,7 @@
 - Changed: `.claude-plugin/marketplace.json` — `homepage` записи → новый адрес; имя маркетплейса `swot-news-plugin` оставлено без изменений.
 - Changed: `README.md`, `README.en.md`, `docs/УСТАНОВКА.md` — установка через хаб `https://github.com/beCyborg/jadlis-start.git` → `swot-news@jadlis`; блок альтернативной установки из своего маркетплейса заменён строкой о том, что старые установки продолжают работать.
 - Changed: `CLAUDE.md` — заголовок и адрес хаба.
-- Changed: `.github/workflows/plugin-validate.yml` — вызов переиспользуемого workflow `beCyborg/jadlis-start/.github/workflows/plugin-ci.yml@main`.
+- Changed: `.github/workflows/plugin-validate.yml` — вызов переиспользуемого workflow `beCyborg/jadlis-start/.github/workflows/plugin-ci.yml@main` (`mode: plugin` — репо root-as-plugin).
 - Migration: не требуется, скиллы, агенты и скрипты не менялись.
 
 ## [2.0.0] — 2026-09-07 — переименование скилла и слияние локальной версии / skill rename and local merge
