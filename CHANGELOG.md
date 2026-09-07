@@ -2,6 +2,19 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [2.0.1] — 2026-09-07 — переименование репозитория / repository rename
+
+### Для человека
+- Репо переименовано в `jadlis-swot-news`, маркетплейс `jadlis` (`swot-news@jadlis`); старый адрес редиректит, старая установка продолжает работать.
+
+### For agents
+- Changed: `.claude-plugin/plugin.json` — `version` 2.0.0 → 2.0.1, `repository` → `https://github.com/beCyborg/jadlis-swot-news`, добавлен `homepage`.
+- Changed: `.claude-plugin/marketplace.json` — `homepage` записи → новый адрес; имя маркетплейса `swot-news-plugin` оставлено без изменений.
+- Changed: `README.md`, `README.en.md`, `docs/УСТАНОВКА.md` — установка через хаб `https://github.com/beCyborg/jadlis-start.git` → `swot-news@jadlis`; блок альтернативной установки из своего маркетплейса заменён строкой о том, что старые установки продолжают работать.
+- Changed: `CLAUDE.md` — заголовок и адрес хаба.
+- Changed: `.github/workflows/plugin-validate.yml` — вызов переиспользуемого workflow `beCyborg/jadlis-start/.github/workflows/plugin-ci.yml@main`.
+- Migration: не требуется, скиллы, агенты и скрипты не менялись.
+
 ## [2.0.0] — 2026-09-07 — переименование скилла и слияние локальной версии / skill rename and local merge
 
 ### Для человека

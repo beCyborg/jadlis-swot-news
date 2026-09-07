@@ -63,7 +63,7 @@ Paste this block to an agent in Claude Code opened in your working folder:
 
 ```text
 You are an installer. Do exactly these steps and nothing beyond them:
-1. Bash: claude plugin marketplace add https://github.com/beCyborg/jadlis-plugins.git
+1. Bash: claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
 2. Bash: claude plugin install swot-news@jadlis
 3. Tell me in one line: "Send /reload-plugins, then write: /swot-news:setup"
 Do not read, create or install anything else.
@@ -72,16 +72,11 @@ Do not read, create or install anything else.
 The manual path is the same commands. The main channel is the `jadlis` hub, where the plugin is sub-step 6.3 of the handover route:
 
 ```bash
-claude plugin marketplace add https://github.com/beCyborg/jadlis-plugins.git
+claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
 claude plugin install swot-news@jadlis
 ```
 
-Independently of the hub, the repository ships its own marketplace:
-
-```bash
-claude plugin marketplace add https://github.com/beCyborg/swot-news-plugin.git
-claude plugin install swot-news@swot-news-plugin
-```
+The repository's legacy marketplace (`swot-news-plugin`) stays in place for installs already made — they keep working after the repository rename.
 
 The full HTTPS URL is required: the short `owner/repo` form expands to an SSH address, and a new user usually has no SSH key. Third-party marketplaces do not auto-update by default: run `claude plugin update swot-news@jadlis` (or `@swot-news-plugin`), or turn auto-update on once in `/plugin` → Marketplaces.
 
