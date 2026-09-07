@@ -1,109 +1,162 @@
-[Русский](README.md) · English
+English · [Русский](README.md)
 
-# SWOT News — a daily personal SWOT of world news
+# You know what happened in the world, and not what any of it changes for you
 
-A Claude Code plugin: it takes the fresh [Kagi News](https://news.kagi.com) batch (public API, no key) and writes a compact delta issue — which of today's events actually touch you, and what to do about them.
+The Kagi News sections you picked are read by parallel analysts through a file holding your
+profile, and the daily note gets only the delta — what appeared, what escalated, what is fading.
 
-## Why
-
-A feed gives you emotion, not a position: an important story and *your* story are different stories. As long as an event has nothing to do with you, it stays somebody else's importance — and by the evening it leaves neither a decision nor a trace.
-
-The plugin puts selection and analysis between the feed and you (tag `swot-news--v2.0.1`):
-
-- Reads only the topics you picked at onboarding out of the live Kagi catalogue (the skill quotes roughly 165 topics; a valid pick is 12–60, a comfortable one 25–40).
-- Spreads them across 1–4 clusters and starts one analyst per cluster plus an enricher — in parallel, in a single message.
-- Every candidate gets two scores — impact and likelihood — and reaches the issue only if it changes something for you.
-- Writes a **delta**, not a recap: new, escalating, fading, unchanged — relative to yesterday's issue.
-- Recurring topics become base cards with their own history; ≥ 14 days without mentions marks a card as fading, ≥ 30 archives it.
-
-## What it looks like
-
-![On the left a globe in a swarm of identical news cards, on the right a person holding a single card](docs/img/04-swot-news-01.webp)
-
-![A stream of identical cards runs through a funnel, two come out at the bottom, a side channel carries the rest into a box](docs/img/04-swot-news-02.webp)
-
-<details>
-<summary>What appears in the working folder and what an entry looks like (synthetic example)</summary>
-
-Folder names follow the language of your working folder; the example below is the Russian layout the plugin ships with.
-
-```text
-My-folder/
-├── Контекст.md          profile, interests, priorities — read on every run
-├── SWOT.md              base table of contents
-├── _Watchlist.md        candidate topics that are not cards yet
-├── Силы/  Слабости/  Возможности/  Угрозы/     cards for confirmed topics
-├── Выпуски/
-│   └── SWOT_2026-09-06.md
-└── .swot-news/config.json
 ```
-
-An issue entry uses one frame: what happened → why it matters to me → what to do:
-
-```markdown
-### O-2026-011 · A key vendor adds a cheaper tier · 🆕 new · Now
-
-**What happened.** The vendor my working setup depends on introduces a tier
-below the one I am on.
-
-**Why it matters to me.** It directly affects the cost of my main tool.
-
-**Score.** Impact 3 × likelihood 4 = 12 → monitor.
-
-**What to do.** Compare with the current tier at the end of the week, before renewal.
-
-**Plan B.** If the tier disappears, I stay where I am and nothing breaks.
-```
-
-</details>
-
-## Install
-
-Paste this block to an agent in Claude Code opened in your working folder:
-
-```text
-You are an installer. Do exactly these steps and nothing beyond them:
-1. Bash: claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-2. Bash: claude plugin install swot-news@jadlis
-3. Tell me in one line: "Send /reload-plugins, then write: /swot-news:setup"
-Do not read, create or install anything else.
-```
-
-The manual path is the same commands. The main channel is the `jadlis` hub, where the plugin is sub-step 6.3 of the handover route:
-
-```bash
 claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
 claude plugin install swot-news@jadlis
 ```
 
-The repository's legacy marketplace (`swot-news-plugin`) stays in place for installs already made — they keep working after the repository rename.
+No keys needed — there is a single source and it is the public Kagi News API; before the first
+issue, though, run the onboarding `/swot-news:setup` in the folder where the notes will live.
 
-The full HTTPS URL is required: the short `owner/repo` form expands to an SSH address, and a new user usually has no SSH key. Third-party marketplaces do not auto-update by default: run `claude plugin update swot-news@jadlis` (or `@swot-news-plugin`), or turn auto-update on once in `/plugin` → Marketplaces.
+![The general news stream passes through a file with your profile, and out come a short daily issue and a topic card](docs/img/hero-jadlis-swot-news.webp)
 
-Detailed install and troubleshooting — **[docs/УСТАНОВКА.md](docs/УСТАНОВКА.md)** (Russian).
+In words: on the left the general news stream, in the middle the file with your profile, on the
+right a short daily issue and a card for a topic that has held for more than one day.
 
-## Usage
+This is my workbench published as it is, not a product: whatever I stopped using, I removed.
 
-Three typical scenarios:
+## Before → after
 
-1. **First run** — `/swot-news:setup`. It inspects the folder, interviews you about your profile, walks the Kagi topic catalogue, balances clusters and creates the structure. Without a config, `daily` prints one line and creates nothing.
-2. **Daily issue** — `/swot-news:daily-news-swot`. Collect → analyse → issue → digest in chat. It asks no questions, so it is safe on a schedule; `--force` overwrites today's issue.
-3. **Adjust a setting** — `/swot-news:setup --recheck` (rebuild the category list, the Kagi catalogue changes) or `/swot-news:setup --profile` (profile only, categories untouched).
+| By hand | With an AI chat | With this plugin |
+|---|---|---|
+| **Whose importance this is.** A feed sorts by importance in general, and your part in the event is not in it. | It retells and shortens whatever you bring it: it has no profile to select against. | Every story passes through `Контекст.md` — occupation, location, priorities, interests and non-interests — and reaches the issue only if it changes something for you. |
+| **The same topic every day.** It comes back indistinguishable from yesterday, and you cannot tell whether it moved or stood still. | It works the topic out from scratch again, with no yesterday's version beside it. | It matches the topic against the base cards and the watchlist and writes a delta: new, escalation, fading; what did not change goes out in a single line. |
+| **What is left the next morning.** The tabs are closed, nothing remains. | The analysis stays in the chat log and is lost right there. | The issue and the cards are Markdown files in your folder; a topic that holds for more than a day becomes a card with a history, and an abandoned one archives itself. |
+| **A day with no news.** You scroll anyway: you cannot see in advance that nothing came out. | It answers any request, even when there is nothing to answer about. | It compares the fresh batch `batch_id` with the last issue: batch no newer — no file is created, one line goes to the chat. |
+| **Who presses the button.** The ritual rests on you and breaks in the first busy week. | It needs a live dialogue: without your answers the turn does not end. | The daily skill has the question tool switched off inside the skill itself, and the turn has to finish on its own — so it can go into `/schedule`. |
 
-Every config field — **[docs/НАСТРОЙКА.md](docs/НАСТРОЙКА.md)** (Russian).
+## How it works
 
-## Limits and cost
+![Config and a freshness check, then clusters fan out to parallel analysts, and out come the daily issue and the cards](docs/img/how-jadlis-swot-news.webp)
 
-What it needs and what it does not do:
+Going in — the fresh Kagi News batch across the sections you picked, and your `Контекст.md`.
+Inside — a config gate and a batch freshness check, then the categories fan out into clusters,
+one analyst per cluster, while the "monitor daily" topics go to the enricher out on the web.
+Coming out — the daily issue, updated base cards, and a digest in the chat.
 
-- **It needs context about you.** Selection runs against `Контекст.md` — profile, interests, priorities. An empty context turns the issue back into an ordinary feed.
-- **Requirements:** Claude Code (CLI or desktop), Python 3.9+ (standard library only, nothing to install), network access to `news.kagi.com`. No API keys and no paid subscriptions.
-- **Optional:** Brave Search MCP — when connected, the daily enrichment goes through it; otherwise through the built-in web search, or not at all. Obsidian is detected automatically: with it you get wikilinks, callouts and a `.base` dashboard, without it plain Markdown.
-- **An empty day stays empty.** If the batch is no newer than the last issue, no note is written and one line goes to the chat. A failed run leaves no junk files.
-- **Cluster files weigh megabytes** and are never read into the main context — analysts get paths, not contents.
+In words: config → batch freshness check → collection by category → analysts and the enricher in
+parallel → the delta assembled → the issue file → cards and watchlist → the digest.
 
-## Data and licences
+Collecting the data is one script on the Python standard library: it pulls the batch by a pinned
+`batch_id` so that `/latest` cannot switch mid-collection, and lays the categories out into cluster
+files in the system temp folder. Those files are never read into the main context — an analyst gets
+a path and walks it with grep and offsets. There are one to four analysts, one per cluster; each
+returns candidates with two scores, force of impact and likelihood, and with a delta status against
+the topics already known.
 
-- Plugin code — no license: read and use it personally; all rights reserved.
-- Kagi News data — **CC BY-NC 4.0**: non-commercial use with attribution. The attribution is inserted into every issue footer automatically; do not remove it.
-- The Kagi News API is public and marked beta — it may change. If it is unavailable the script returns a clear error and the run ends in a single line.
+Filing the day's findings into the base is a separate step, and its order of operations is fixed:
+first the watchlist cleanup, then matching against the cards, then promoting a watchlist topic into
+a card, then new topics and the fading check. A topic left unmentioned for long enough is first
+marked as fading and then archived — the file itself is never deleted. The issue is written in one
+of two markup modes: the onboarding checks whether the folder sits inside an Obsidian vault and
+turns on either wikilinks with callouts, or plain Markdown.
+
+## Installing and the first run
+
+**a) Text to paste to an agent.** Copy the whole thing into a Claude Code chat:
+
+```
+You are the installer. Install the plugin swot-news from the jadlis marketplace on this machine.
+First check the interpreter: python3 --version; not found — python --version, then py -3 --version.
+If the version is below 3.9, or none of the commands worked, stop and tell me: without Python
+the plugin cannot collect the news.
+Then run exactly these commands, verbatim, shortening nothing:
+1. claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
+2. claude plugin install swot-news@jadlis
+3. claude plugin list — show me the line about swot-news and its version.
+This plugin asks for no keys: the news source is a public API with no key.
+Do not run the onboarding /swot-news:setup yourself — I will run it from my own working folder.
+Before each command show it to me in full and wait for "yes". If I say "no", do not run it,
+tell me what you skipped, and move on.
+If a command returns an error, stop, show me the output, and do not move to the next one.
+```
+
+**b) Commands by hand.**
+
+```
+claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
+claude plugin install swot-news@jadlis
+claude plugin list
+```
+
+The first command installs nothing — it adds the marketplace. Only the second one installs, and one
+line removes it: `claude plugin uninstall swot-news@jadlis --keep-data`.
+
+**c) The short command.** There is no entry skill under the bare plugin name here: `/swot-news` will
+not be found, the commands are written in their full form. Open Claude Code in the folder where the
+issues will live and go through the onboarding once:
+
+```
+/swot-news:setup
+```
+
+Then, in the same folder, the daily run:
+
+```
+/swot-news:daily-news-swot
+```
+
+If they are not found, check the plugin name with `claude plugin list`. Nothing is configured at
+install time: every setting appears during the onboarding and lands in `.swot-news/config.json`
+next to your notes. The daily skill looks for that file from the working folder upwards through the
+folder tree, and one level inwards as well — so it has to be run in that same folder, in a subfolder
+of it, or in the folder above. Working from somewhere else entirely — the path to the config is set
+by the `SWOT_NEWS_CONFIG` environment variable. The Kagi batch comes out once a day, around noon
+UTC; running it makes sense once the batch is out.
+
+## Limits, cost, updating
+
+**What it does not do.** It does not go looking for news itself: there is one source, the public
+Kagi News API, and what is not in its batch will not be in the issue either. It does not cross-verify
+claims: the enricher goes to the web only for the topics in the "monitor daily" section, and only to
+see whether the status has changed since yesterday. It does not translate the batch — `lang=ru` on
+that API returns English content, so the analysis runs on the English batch while the issue is
+written in Russian. It does not create an issue until a fresh batch is out; if you need one anyway —
+`/swot-news:daily-news-swot --force`. It does not write outside your working folder, apart from the
+system temp folder that holds the cluster files for the length of a run. And it does not send your
+profile anywhere: `Контекст.md` is read locally and only ever reaches the prompts of subagents
+inside your own session.
+
+**What you need.** No keys: the Kagi News API is public, status beta. You need Python 3.9 or newer,
+and only as an interpreter — the script is written on the standard library and installs no
+dependencies. Optional: the Brave Search MCP for the daily enrichment — without it the enricher
+switches to Exa, without both to the built-in web search, and with an empty "monitor daily" section
+it does not start at all; Obsidian — the onboarding notices the vault on its own and turns on
+wikilinks, callouts and the `.base` dashboard. Kagi News data comes under CC BY-NC 4.0:
+non-commercial use with attribution, and the attribution already sits in the footer of every issue —
+it must not be removed from the template.
+
+[уточнить] — I have never run this on Windows or Linux, even though the script handles `py -3` and
+fixes the console encoding itself.
+
+**How tokens get spent.** The heaviest part of a run is the analysts themselves: one to four of
+them, one per cluster, plus the enricher — all in a single parallel pass. That is why the cluster
+files never reach the main context; the subagents are handed paths only. Three knobs in the config
+and in the Context make a run cheaper: fewer clusters, fewer entries in the issue budget, and an
+empty "monitor daily" section — then the enricher never starts.
+
+**Verified where I work:** my Mac, my subscription, my settings. Where else this works — [уточнить].
+
+**Terms of use.** There is no license: all rights reserved by the author. You may read it and use it
+personally. Commercial use, republishing and bundling it into your own products — by arrangement
+with me.
+
+**Updating.** With a third-party marketplace, auto-update is off on your side: until you run the
+first command you keep the version you installed.
+
+```
+claude plugin marketplace update jadlis
+claude plugin update swot-news@jadlis
+claude plugin list
+```
+
+Reinstall, if something ended up crooked:
+
+```
+claude plugin uninstall swot-news@jadlis --keep-data && claude plugin install swot-news@jadlis
+```
