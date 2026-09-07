@@ -1,6 +1,6 @@
-# swot-news-plugin — конвенции репо
+# jadlis-swot-news — конвенции репо
 
-Root-as-plugin репозиторий: сам корень и есть плагин `swot-news` (`.claude-plugin/plugin.json`), рядом — свой маркетплейс `swot-news-plugin` (`.claude-plugin/marketplace.json`). Основной канал раздачи — хаб `jadlis` (`beCyborg/jadlis-plugins`), подшаг 6.3 маршрута передачи. Эти правила читает агент, который коммитит.
+Root-as-plugin репозиторий: сам корень и есть плагин `swot-news` (`.claude-plugin/plugin.json`), рядом — свой маркетплейс `swot-news-plugin` (`.claude-plugin/marketplace.json`). Основной канал раздачи — хаб `jadlis` (`beCyborg/jadlis-start`), подшаг 6.3 маршрута передачи. Эти правила читает агент, который коммитит.
 
 ## Коммиты
 

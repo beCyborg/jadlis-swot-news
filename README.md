@@ -61,7 +61,7 @@
 
 ```text
 Ты — установщик. Выполни ровно эти шаги и ничего сверх них:
-1. Bash: claude plugin marketplace add https://github.com/beCyborg/jadlis-plugins.git
+1. Bash: claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
 2. Bash: claude plugin install swot-news@jadlis
 3. Скажи мне одной строкой: «Отправь /reload-plugins, потом напиши: /swot-news:setup»
 Ничего не читай, не создавай и не ставь помимо этого.
@@ -70,16 +70,11 @@
 Ручной путь — те же команды. Основной канал — хаб `jadlis`, в нём плагин идёт подшагом 6.3 маршрута передачи:
 
 ```bash
-claude plugin marketplace add https://github.com/beCyborg/jadlis-plugins.git
+claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
 claude plugin install swot-news@jadlis
 ```
 
-Отдельно от хаба — свой маркетплейс репозитория:
-
-```bash
-claude plugin marketplace add https://github.com/beCyborg/swot-news-plugin.git
-claude plugin install swot-news@swot-news-plugin
-```
+Старый маркетплейс репозитория (`swot-news-plugin`) остаётся для уже сделанных установок — после переименования репозитория они продолжают работать.
 
 Полный HTTPS-URL обязателен: короткая форма `owner/repo` разворачивается в SSH-адрес, а SSH-ключа у нового пользователя обычно нет. Обновление у сторонних маркетплейсов по умолчанию не автоматическое: `claude plugin update swot-news@jadlis` (или `@swot-news-plugin`), либо включить авто-обновление один раз в `/plugin` → Marketplaces.
 
