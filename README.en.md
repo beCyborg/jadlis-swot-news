@@ -6,12 +6,12 @@ The Kagi News sections you picked are read by parallel analysts through a file h
 profile, and the daily note gets only the delta — what appeared, what escalated, what is fading.
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-claude plugin install swot-news@jadlis
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin install jadlis-swot-news@jadlis
 ```
 
 No keys needed — there is a single source and it is the public Kagi News API; before the first
-issue, though, run the onboarding `/swot-news:setup` in the folder where the notes will live.
+issue, though, run the onboarding `/jadlis-swot-news:swot-news-setup` in the folder where the notes will live.
 
 ![The general news stream passes through a file with your profile, and out come a short daily issue and a topic card](docs/img/hero-jadlis-swot-news.webp)
 
@@ -61,16 +61,16 @@ turns on either wikilinks with callouts, or plain Markdown.
 **a) Text to paste to an agent.** Copy the whole thing into a Claude Code chat:
 
 ```
-You are the installer. Install the plugin swot-news from the jadlis marketplace on this machine.
+You are the installer. Install the plugin jadlis-swot-news from the jadlis marketplace on this machine.
 First check the interpreter: python3 --version; not found — python --version, then py -3 --version.
 If the version is below 3.9, or none of the commands worked, stop and tell me: without Python
 the plugin cannot collect the news.
 Then run exactly these commands, verbatim, shortening nothing:
-1. claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-2. claude plugin install swot-news@jadlis
-3. claude plugin list — show me the line about swot-news and its version.
+1. claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+2. claude plugin install jadlis-swot-news@jadlis
+3. claude plugin list — show me the line about jadlis-swot-news and its version.
 This plugin asks for no keys: the news source is a public API with no key.
-Do not run the onboarding /swot-news:setup yourself — I will run it from my own working folder.
+Do not run the onboarding /jadlis-swot-news:swot-news-setup yourself — I will run it from my own working folder.
 Before each command show it to me in full and wait for "yes". If I say "no", do not run it,
 tell me what you skipped, and move on.
 If a command returns an error, stop, show me the output, and do not move to the next one.
@@ -79,26 +79,26 @@ If a command returns an error, stop, show me the output, and do not move to the 
 **b) Commands by hand.**
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-claude plugin install swot-news@jadlis
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin install jadlis-swot-news@jadlis
 claude plugin list
 ```
 
 The first command installs nothing — it adds the marketplace. Only the second one installs, and one
-line removes it: `claude plugin uninstall swot-news@jadlis --keep-data`.
+line removes it: `claude plugin uninstall jadlis-swot-news@jadlis --keep-data`.
 
-**c) The short command.** There is no entry skill under the bare plugin name here: `/swot-news` will
-not be found, the commands are written in their full form. Open Claude Code in the folder where the
-issues will live and go through the onboarding once:
+**c) The short command.** The entry skill carries the plugin's short name: the daily run starts as
+`/swot-news`, the full form is `/jadlis-swot-news:swot-news`. Open Claude Code in the folder where
+the issues will live and go through the onboarding once:
 
 ```
-/swot-news:setup
+/jadlis-swot-news:swot-news-setup
 ```
 
 Then, in the same folder, the daily run:
 
 ```
-/swot-news:daily-news-swot
+/swot-news
 ```
 
 If they are not found, check the plugin name with `claude plugin list`. Nothing is configured at
@@ -117,7 +117,7 @@ claims: the enricher goes to the web only for the topics in the "monitor daily" 
 see whether the status has changed since yesterday. It does not translate the batch — `lang=ru` on
 that API returns English content, so the analysis runs on the English batch while the issue is
 written in Russian. It does not create an issue until a fresh batch is out; if you need one anyway —
-`/swot-news:daily-news-swot --force`. It does not write outside your working folder, apart from the
+`/swot-news --force`. It does not write outside your working folder, apart from the
 system temp folder that holds the cluster files for the length of a run. And it does not send your
 profile anywhere: `Контекст.md` is read locally and only ever reaches the prompts of subagents
 inside your own session.
@@ -151,12 +151,12 @@ first command you keep the version you installed.
 
 ```
 claude plugin marketplace update jadlis
-claude plugin update swot-news@jadlis
+claude plugin update jadlis-swot-news@jadlis
 claude plugin list
 ```
 
 Reinstall, if something ended up crooked:
 
 ```
-claude plugin uninstall swot-news@jadlis --keep-data && claude plugin install swot-news@jadlis
+claude plugin uninstall jadlis-swot-news@jadlis --keep-data && claude plugin install jadlis-swot-news@jadlis
 ```

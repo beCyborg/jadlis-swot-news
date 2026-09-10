@@ -1,7 +1,7 @@
 ---
-name: setup
+name: swot-news-setup
 description: |
-  Онбординг плагина swot-news: разбирает папку пользователя, проводит интервью о профиле и приоритетах, проходит вместе с ним по всем ~165 направлениям Kagi News, раскладывает выбранное по кластерам аналитиков и создаёт рабочую структуру — Контекст, watchlist, папки квадрантов SWOT и конфиг. Запускается один раз перед первым `/swot-news:daily-news-swot`; повторно — чтобы поправить профиль или пересобрать список категорий.
+  Онбординг плагина jadlis-swot-news: разбирает папку пользователя, проводит интервью о профиле и приоритетах, проходит вместе с ним по всем ~165 направлениям Kagi News, раскладывает выбранное по кластерам аналитиков и создаёт рабочую структуру — Контекст, watchlist, папки квадрантов SWOT и конфиг. Запускается один раз перед первым `/swot-news`; повторно — чтобы поправить профиль или пересобрать список категорий.
   Используй этот скилл, когда пользователь просит: настроить SWOT-новости, настроить swot-news, первый запуск новостного брифинга, поменять категории новостей, обновить профиль для новостей, setup news SWOT, «настрой мне новости».
 argument-hint: "[--recheck] [--profile] [--reset]"
 allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, Bash(python3 *), Bash(python *), Bash(py *), Bash(date *), Bash(ls *), Bash(pwd), Bash(mkdir *)
@@ -10,10 +10,10 @@ allowed-tools: Read, Write, Edit, Glob, Grep, AskUserQuestion, Bash(python3 *), 
 # SWOT News — онбординг
 
 Скрипт: `${CLAUDE_PLUGIN_ROOT}/scripts/fetch_kagi_api.py`.
-References: `${CLAUDE_PLUGIN_ROOT}/skills/setup/references/`.
-Шаблоны: `${CLAUDE_PLUGIN_ROOT}/skills/setup/assets/`.
+References: `${CLAUDE_PLUGIN_ROOT}/skills/swot-news-setup/references/`.
+Шаблоны: `${CLAUDE_PLUGIN_ROOT}/skills/swot-news-setup/assets/`.
 
-Этот скилл **задаёт вопросы** — в отличие от `/swot-news:daily-news-swot`. Внутри себя
+Этот скилл **задаёт вопросы** — в отличие от `/swot-news`. Внутри себя
 `daily` не вызывать: у него противоположная политика вопросов.
 
 Режимы (аргумент):
@@ -152,9 +152,9 @@ Claude Code будет спрашивать разрешение на кажды
 
 ```
 Готово. {N} категорий в {n} кластерах, выпуски → {база}/Выпуски/.
-Первый выпуск: /swot-news:daily-news-swot
+Первый выпуск: /swot-news
 Батч Kagi выходит ~12:00 UTC (у тебя ~{локальное время}) — запускай после него.
 ```
 
-`/swot-news:daily-news-swot` **не вызывать** — пользователь запустит сам.
+`/swot-news` **не вызывать** — пользователь запустит сам.
 Правки профиля потом — руками в `Контекст.md` или в диалоге после дайджеста.

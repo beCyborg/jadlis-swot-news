@@ -6,12 +6,12 @@
 профилем, а в заметку дня ложится только дельта — что появилось, что усилилось, что затухает.
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-claude plugin install swot-news@jadlis
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin install jadlis-swot-news@jadlis
 ```
 
 Ключи не нужны — источник один, и это публичный API Kagi News; но до первого выпуска стоит
-онбординг `/swot-news:setup` в той папке, где будут жить заметки.
+онбординг `/jadlis-swot-news:swot-news-setup` в той папке, где будут жить заметки.
 
 ![Общий поток новостей проходит через файл с профилем, наружу выходит короткий выпуск дня и карточка темы](docs/img/hero-jadlis-swot-news.webp)
 
@@ -61,16 +61,16 @@ callout'ами, либо обычный Markdown.
 **а) Текст для вставки агенту.** Скопируй целиком в чат Claude Code:
 
 ```
-Ты — установщик. Поставь на эту машину плагин swot-news из маркетплейса jadlis.
+Ты — установщик. Поставь на эту машину плагин jadlis-swot-news из маркетплейса jadlis.
 Сначала проверь интерпретатор: python3 --version, не нашёлся — python --version,
 затем py -3 --version. Версия ниже 3.9 или ни одна команда не сработала — остановись
 и скажи мне об этом, плагин без Python не соберёт новости.
 Выполни ровно эти команды, дословно, ничего не сокращая:
-1. claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-2. claude plugin install swot-news@jadlis
-3. claude plugin list — покажи мне строку про swot-news и его версию.
+1. claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+2. claude plugin install jadlis-swot-news@jadlis
+3. claude plugin list — покажи мне строку про jadlis-swot-news и его версию.
 Ключей этот плагин не просит: источник новостей — публичный API без ключа.
-Онбординг /swot-news:setup сам не запускай — его запущу я, из своей рабочей папки.
+Онбординг /jadlis-swot-news:swot-news-setup сам не запускай — его запущу я, из своей рабочей папки.
 Перед каждой командой покажи её мне целиком и дождись «да». Сказал «нет» — не выполняй,
 скажи, что именно пропустил, и иди дальше.
 Команда вернула ошибку — остановись, покажи вывод, к следующей не переходи.
@@ -79,26 +79,26 @@ callout'ами, либо обычный Markdown.
 **б) Команды руками.**
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-start.git
-claude plugin install swot-news@jadlis
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin install jadlis-swot-news@jadlis
 claude plugin list
 ```
 
 Первая команда ничего не ставит — она добавляет маркетплейс. Ставит только вторая, и снимается
-она одной строкой: `claude plugin uninstall swot-news@jadlis --keep-data`.
+она одной строкой: `claude plugin uninstall jadlis-swot-news@jadlis --keep-data`.
 
-**в) Короткая команда.** Входного скилла с голым именем плагина здесь нет: `/swot-news` не
-найдётся, команды пишутся полными формами. Открой Claude Code в той папке, где будут жить
-выпуски, и один раз пройди онбординг:
+**в) Короткая команда.** Входной скилл носит короткое имя плагина: ежедневный прогон
+запускается как `/swot-news`, полная форма — `/jadlis-swot-news:swot-news`. Открой Claude Code
+в той папке, где будут жить выпуски, и один раз пройди онбординг:
 
 ```
-/swot-news:setup
+/jadlis-swot-news:swot-news-setup
 ```
 
 Дальше, в той же папке, — ежедневный прогон:
 
 ```
-/swot-news:daily-news-swot
+/swot-news
 ```
 
 Не находятся — сверь имя плагина строкой `claude plugin list`. При установке ничего не
@@ -116,7 +116,7 @@ claude plugin list
 веб только по темам из раздела «Мониторить ежедневно» и только чтобы увидеть, не изменился ли
 статус со вчера. Не переводит батч — `lang=ru` у API отдаёт английский контент, поэтому анализ
 идёт по английскому батчу, а выпуск пишется по-русски. Не создаёт выпуск, пока не вышел свежий
-батч; нужен всё равно — `/swot-news:daily-news-swot --force`. Не пишет за пределы твоей рабочей
+батч; нужен всё равно — `/swot-news --force`. Не пишет за пределы твоей рабочей
 папки, кроме временной папки системы, куда на время прогона ложатся кластерные файлы. И не
 отправляет твой профиль наружу: `Контекст.md` читается локально и попадает только в промпты
 субагентов твоей же сессии.
@@ -150,12 +150,12 @@ claude plugin list
 
 ```
 claude plugin marketplace update jadlis
-claude plugin update swot-news@jadlis
+claude plugin update jadlis-swot-news@jadlis
 claude plugin list
 ```
 
 Переустановка, если что-то встало криво:
 
 ```
-claude plugin uninstall swot-news@jadlis --keep-data && claude plugin install swot-news@jadlis
+claude plugin uninstall jadlis-swot-news@jadlis --keep-data && claude plugin install jadlis-swot-news@jadlis
 ```

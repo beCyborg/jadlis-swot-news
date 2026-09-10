@@ -109,7 +109,7 @@ def load_config(explicit=None, required=True):
             return None, None
         json.dump({
             "error": "config_not_found",
-            "hint": "Конфиг swot-news не найден. Запусти /swot-news:setup в рабочей папке "
+            "hint": "Конфиг swot-news не найден. Запусти /jadlis-swot-news:swot-news-setup в рабочей папке "
                     "или укажи путь: --config <путь>/.swot-news/config.json "
                     "(либо переменную окружения SWOT_NEWS_CONFIG).",
             "searched": tried,
@@ -456,7 +456,7 @@ def self_check(cfg, args):
     share = round(len(missing) / len(wanted), 3) if wanted else 0.0
     if share > 0.2:
         notes.append(f"из каталога пропало {len(missing)} из {len(wanted)} категорий "
-                     f"({int(share * 100)}%) — стоит перепройти выбор: /swot-news:setup --recheck")
+                     f"({int(share * 100)}%) — стоит перепройти выбор: /jadlis-swot-news:swot-news-setup --recheck")
     return {
         "ok": not problems,
         "config": cfg["_path"],
