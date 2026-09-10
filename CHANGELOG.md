@@ -1,6 +1,24 @@
-# Changelog — swot-news
+# Changelog — jadlis-swot-news
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
+
+## [3.0.0] — 2026-09-10 — переименование плагина / plugin rename
+
+### Для человека
+- Плагин теперь называется `jadlis-swot-news`: ставится строкой `claude plugin install jadlis-swot-news@jadlis` из хаба `https://github.com/beCyborg/jadlis-hub`.
+- Ежедневный прогон запускается короткой командой `/swot-news` (полная форма — `/jadlis-swot-news:swot-news`), онбординг — `/jadlis-swot-news:swot-news-setup`.
+- Совместимости со старыми именами нет: переустанови плагин, старая установка `swot-news@jadlis` больше не обновляется.
+
+### For agents
+- Changed: `.claude-plugin/plugin.json` — `name` `swot-news` → `jadlis-swot-news`, `version` 2.0.1 → 3.0.0.
+- Changed: `.claude-plugin/marketplace.json` — имя записи плагина → `jadlis-swot-news` (имя маркетплейса `swot-news-plugin` не менялось).
+- Changed: `skills/daily-news-swot/` → `skills/swot-news/` (`git mv`), frontmatter `name: daily-news-swot` → `name: swot-news`; `skills/setup/` → `skills/swot-news-setup/` (`git mv`), `name: setup` → `name: swot-news-setup` (голое `/setup` конфликтовало с общим именем).
+- Changed: `agents/*.md` — в `description` скилл-владелец теперь `jadlis-swot-news:swot-news`; имена файлов агентов не менялись.
+- Changed: `README.md`, `README.en.md`, `docs/УСТАНОВКА.md`, `docs/НАСТРОЙКА.md`, `CLAUDE.md`, `skills/**`, `scripts/fetch_kagi_api.py`, `scripts/category_groups.json` — установочные строки, полные формы команд и пути `${CLAUDE_PLUGIN_ROOT}/skills/...`.
+- Changed: `README.md`, `README.en.md` — пункт «Короткая команда» переписан: короткая команда `/swot-news` теперь существует (раньше в тексте утверждалось обратное).
+- Changed: адрес хаба `beCyborg/jadlis-start` → `beCyborg/jadlis-hub` во всех текстах.
+- Changed: `.github/workflows/plugin-validate.yml` — вызов `beCyborg/jadlis-hub/.github/workflows/plugin-ci.yml@main`.
+- Migration: `claude plugin uninstall swot-news@jadlis --keep-data` → `claude plugin marketplace add https://github.com/beCyborg/jadlis-hub` → `claude plugin install jadlis-swot-news@jadlis`. Рабочая папка и `.swot-news/config.json` не меняются. Записи ниже описывают прошлые версии и сохраняют старые имена.
 
 ## [2.0.1] — 2026-09-07 — переименование репозитория / repository rename
 

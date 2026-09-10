@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "swot-news",
+      "name": "jadlis-swot-news",
       "description": "Собирает батч Kagi News, анализирует его параллельными субагентами через призму личного профиля и пишет дельта-выпуск SWOT в Markdown",
       "author": { "name": "beCyborg" },
       "source": "./",

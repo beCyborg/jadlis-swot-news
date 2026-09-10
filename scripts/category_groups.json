@@ -1,5 +1,5 @@
 {
-  "_comment": "Статическая группировка категорий Kagi News по тематическим блокам для онбординга (/swot-news:setup, шаг 3). Каталог живой — категории появляются и исчезают; неизвестные раскладываются эвристикой: имя с ' | ' → local, иначе other. Проверено на каталоге 2026-08-09 (165 категорий, покрытие 100%).",
+  "_comment": "Статическая группировка категорий Kagi News по тематическим блокам для онбординга (/jadlis-swot-news:swot-news-setup, шаг 3). Каталог живой — категории появляются и исчезают; неизвестные раскладываются эвристикой: имя с ' | ' → local, иначе other. Проверено на каталоге 2026-08-09 (165 категорий, покрытие 100%).",
   "_order": ["world", "security", "economy", "tech", "science", "energy", "europe_west", "europe_nordic", "europe_central", "americas", "asia_pacific", "africa_mena", "society_culture", "sports", "local", "other"],
   "groups": {
     "world": {

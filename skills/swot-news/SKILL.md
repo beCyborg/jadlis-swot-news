@@ -1,5 +1,5 @@
 ---
-name: daily-news-swot
+name: swot-news
 description: |
   Ежедневный персональный SWOT-анализ мировых новостей с Kagi News (публичный API, без ключа). Собирает выбранные на онбординге категории, анализирует 1–4 параллельными субагентами-аналитиками плюс обогатителем, пишет компактный дельта-выпуск в Markdown и обновляет курируемую базу карточек SWOT. Работает без вопросов пользователю — годится для запуска по расписанию; анти-заглушка не даёт плодить пустые выпуски до выхода свежего батча.
   Используй этот скилл, когда пользователь просит: обзор новостей, утренний брифинг, news SWOT, анализ новостей, «что происходит в мире», «новости дня», daily briefing, morning report, Kagi News. Также используй, если пользователь упоминает «SWOT новостей» или хочет понять, как мировые события влияют на его жизнь и работу.
@@ -11,7 +11,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Agent, Bash(python3 *), Bash(pytho
 # SWOT News — ежедневный дельта-пайплайн
 
 Скрипт: `${CLAUDE_PLUGIN_ROOT}/scripts/fetch_kagi_api.py`.
-References: `${CLAUDE_PLUGIN_ROOT}/skills/daily-news-swot/references/`.
+References: `${CLAUDE_PLUGIN_ROOT}/skills/swot-news/references/`.
 Ловушки Kagi News API (`from`/`to` → 500, категория по UUID, задержка картинок,
 `totalStories` на `offset=0`) — `references/gotchas.md`: прочитать перед фазой 2,
 если сбор данных вернул ошибку или пустой батч.
@@ -38,10 +38,10 @@ https://www.python.org/downloads/», КОНЕЦ. Дальше `{PY}` = сраб�
 вверх по дереву папок.
 
 - Выход `2` / `"error": "config_not_found"` → напечатать **ровно одну строку**:
-  «Конфиг не найден — сначала запусти `/swot-news:setup` в рабочей папке».
+  «Конфиг не найден — сначала запусти `/jadlis-swot-news:swot-news-setup` в рабочей папке».
   **КОНЕЦ. Ничего не создавать: ни файлов, ни папок.**
 - `"ok": false` → одна строка с первым элементом `problems` и подсказкой
-  `/swot-news:setup --recheck`. КОНЕЦ.
+  `/jadlis-swot-news:swot-news-setup --recheck`. КОНЕЦ.
 - `"ok": true` → запомнить из ответа: `base_dir`, `issues_dir`, `today`,
   `enricher`, `obsidian`, `clusters`, `categories_missing_share`.
 
@@ -163,6 +163,6 @@ no-op (плагин сам ставит новый файл наверх). Пл�
   Данные CC BY-NC 4.0: некоммерческое использование, атрибуция в футере выпуска
   обязательна.
 - `categories_missing_share > 0.2` → в дайджест строку про
-  `/swot-news:setup --recheck` (см. dialog-protocol.md).
+  `/jadlis-swot-news:swot-news-setup --recheck` (см. dialog-protocol.md).
 - Стоимость прогона снижается: меньше кластеров в конфиге, меньше
   `entries_budget`, пустой раздел «Мониторить ежедневно» (обогатитель не стартует).
