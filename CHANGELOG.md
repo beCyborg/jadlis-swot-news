@@ -2,6 +2,18 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [3.0.1] — 2026-09-22 — Переход на Opus 5.5 / Switch to Opus 5.5
+
+### Для человека
+- Аналитики кластеров и оба обогатителя теперь работают на модели Opus 5.5 — у неё окно на 1M токенов сразу, без отдельной настройки.
+- Плагин требует Claude Code ≥ 2.1.280: более старые версии не знают эту модель.
+- Выпуски, база карточек и конфиг не меняются — переустанавливать и перенастраивать ничего не нужно.
+
+### For agents
+- Changed: `agents/swot-news-analyst.md`, `agents/swot-news-enricher.md`, `agents/swot-news-enricher-web.md` — `model: opus` → `model: claude-opus-5-5`.
+- Changed: `.claude-plugin/plugin.json` — `version` 3.0.0 → 3.0.1.
+- Migration: requires Claude Code ≥ 2.1.280 (the release that added `claude-opus-5-5`); older Claude Code versions may reject the unknown model ID in the agent frontmatter — update Claude Code before updating the plugin. `.swot-news/config.json` and the working folder are untouched.
+
 ## [3.0.0] — 2026-09-10 — переименование плагина / plugin rename
 
 ### Для человека
