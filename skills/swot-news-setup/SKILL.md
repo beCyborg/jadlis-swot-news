@@ -91,7 +91,8 @@ References: `${CLAUDE_PLUGIN_ROOT}/skills/swot-news-setup/references/`.
 Обогатитель проверяет темы «Мониторить ежедневно» свежим веб-поиском.
 
 - Раздел «Мониторить ежедневно» пуст → `enricher.tool = "off"`, шаг пропустить.
-- Иначе — один пробный вызов `mcp__brave-search__brave_web_search`
+- Иначе — один пробный вызов Brave web search: `mcp__plugin_jadlis-search_brave-search__brave_web_search`
+  (плагин jadlis-search), а если такого инструмента нет — `mcp__brave-search__brave_web_search`
   (`query: "test"`, `count: 1`). Ответ пришёл → `"brave"`. Инструмент недоступен
   или ошибка → `"websearch"`. Нативного веб-поиска тоже нет → `"off"`
   и сказать об этом одной строкой.

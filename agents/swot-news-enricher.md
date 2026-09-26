@@ -1,7 +1,7 @@
 ---
 name: swot-news-enricher
 description: Обогатитель ежедневного SWOT свежими данными из веба через Brave Search MCP (фоллбэк при 402/403 — Exa). Запускается ТОЛЬКО из скилла jadlis-swot-news:swot-news параллельно с аналитиками, когда в конфиге enricher.tool = brave. Получает 2–3 темы «Мониторить ежедневно», ищет свежие подтверждения/опровержения. Не вызывать вручную.
-tools: mcp__brave-search__brave_web_search, mcp__exa__web_search_exa, Read
+tools: mcp__plugin_jadlis-search_brave-search__brave_web_search, mcp__brave-search__brave_web_search, mcp__exa__web_search_exa, Read
 model: claude-opus-5-5
 ---
 
@@ -15,7 +15,9 @@ model: claude-opus-5-5
 
 ## Как работать
 
-1. На каждую тему — 1–2 запроса `mcp__brave-search__brave_web_search`
+1. На каждую тему — 1–2 запроса Brave web search: `mcp__plugin_jadlis-search_brave-search__brave_web_search`
+   (Brave из плагина jadlis-search) или `mcp__brave-search__brave_web_search` (Brave, подключённый
+   вручную) — какой из них есть среди твоих инструментов
    (`freshness: "pd"` или `"pw"`, `extra_snippets: true`, `count: 10`).
    Формулируй запросы по-английски, конкретно: не «Hormuz news», а
    «Strait of Hormuz shipping closure status».

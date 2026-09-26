@@ -2,6 +2,19 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [3.0.2] — 2026-09-26 — Обогатитель видит Brave из jadlis-search / Enricher finds Brave from jadlis-search
+
+### Для человека
+- Обогатитель SWOT снова ищет через Brave, если Brave подключён плагином jadlis-search: раньше он знал только имя вручную подключённого сервера и молча оставался без Brave.
+- Проба при настройке (`/jadlis-swot-news:swot-news-setup`) проверяет оба варианта Brave.
+- Конфиг и выпуски не меняются — достаточно обновить плагин.
+
+### For agents
+- Changed: `agents/swot-news-enricher.md` — `tools` now lists `mcp__plugin_jadlis-search_brave-search__brave_web_search` next to `mcp__brave-search__brave_web_search`; step 1 tells the agent to use whichever is present.
+- Changed: `skills/swot-news-setup/SKILL.md` step 4 — probe tries the jadlis-search plugin name first, then the manual server name.
+- Changed: `CLAUDE.md` — release tag format `jadlis-swot-news--v{X.Y.Z}` (since 3.0.0), bump-pin call updated.
+- Changed: `.claude-plugin/plugin.json` — `version` 3.0.1 → 3.0.2.
+
 ## [3.0.1] — 2026-09-22 — Переход на Opus 5.5 / Switch to Opus 5.5
 
 ### Для человека

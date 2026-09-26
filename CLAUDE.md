@@ -13,9 +13,9 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Релизы
 
 - Версия живёт только в `.claude-plugin/plugin.json`; бамп — в том же коммите, что и изменение.
-- Тег `swot-news--v{X.Y.Z}`. GitHub Release поверх тега: заголовок и тело — из `python3 <хаб>/tools/release-notes.py . --title` и без флага.
+- Тег `jadlis-swot-news--v{X.Y.Z}` (до 3.0.0 — `swot-news--v…`). GitHub Release поверх тега: заголовок и тело — из `python3 <хаб>/tools/release-notes.py . --title` и без флага.
 - `CHANGELOG.md`: `## [X.Y.Z] — ГГГГ-ММ-ДД — <кратко по-русски> / <short EN>`, затем `### Для человека` (≤3 буллета) и `### For agents` (`Added / Changed / Removed / Migration / Breaking`, с путями).
-- После релиза обновить пин в маркетплейсе хаба: `python3 <хаб>/tools/bump-pin.py swot-news swot-news--v{X.Y.Z}`.
+- После релиза обновить пин в маркетплейсе хаба: `python3 <хаб>/tools/bump-pin.py jadlis-swot-news jadlis-swot-news--v{X.Y.Z}`.
 - Только patch-forward: никаких force-push, переписывания тегов и релизов.
 
 ## README и доки
