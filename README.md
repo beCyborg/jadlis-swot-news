@@ -6,7 +6,7 @@
 профилем, а в заметку дня ложится только дельта — что появилось, что усилилось, что затухает.
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
 claude plugin install jadlis-swot-news@jadlis
 ```
 
@@ -66,7 +66,7 @@ callout'ами, либо обычный Markdown.
 затем py -3 --version. Версия ниже 3.9 или ни одна команда не сработала — остановись
 и скажи мне об этом, плагин без Python не соберёт новости.
 Выполни ровно эти команды, дословно, ничего не сокращая:
-1. claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+1. claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
 2. claude plugin install jadlis-swot-news@jadlis
 3. claude plugin list — покажи мне строку про jadlis-swot-news и его версию.
 Ключей этот плагин не просит: источник новостей — публичный API без ключа.
@@ -79,7 +79,7 @@ callout'ами, либо обычный Markdown.
 **б) Команды руками.**
 
 ```
-claude plugin marketplace add https://github.com/beCyborg/jadlis-hub
+claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
 claude plugin install jadlis-swot-news@jadlis
 claude plugin list
 ```

@@ -13,9 +13,9 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Релизы
 
 - Версия живёт только в `.claude-plugin/plugin.json`; бамп — в том же коммите, что и изменение.
-- Тег `jadlis-swot-news--v{X.Y.Z}` (до 3.0.0 — `swot-news--v…`). GitHub Release поверх тега: заголовок и тело — из `python3 <хаб>/tools/release-notes.py . --title` и без флага.
+- Тег `jadlis-swot-news--v{X.Y.Z}` (до 3.0.0 — `swot-news--v…`) ставит и пушит в GitLab (`origin`) команда `claude plugin tag . --push`. Старый remote `github` больше не обновляется.
 - `CHANGELOG.md`: `## [X.Y.Z] — ГГГГ-ММ-ДД — <кратко по-русски> / <short EN>`, затем `### Для человека` (≤3 буллета) и `### For agents` (`Added / Changed / Removed / Migration / Breaking`, с путями).
-- После релиза обновить пин в маркетплейсе хаба: `python3 <хаб>/tools/bump-pin.py jadlis-swot-news jadlis-swot-news--v{X.Y.Z}`.
+- После релиза обновить пин в маркетплейсе хаба: в `~/jadlis-hub-gitlab` (ветка `gitlab`) `python3 tools/bump-pin.py jadlis-swot-news jadlis-swot-news--v{X.Y.Z}`, коммит, `git push gitlab gitlab:main`.
 - Только patch-forward: никаких force-push, переписывания тегов и релизов.
 
 ## README и доки
@@ -30,7 +30,7 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Приватность
 
 - В репо нет ключей, почт, телефонов, путей владельца (`/Users/<имя>`) и содержимого чужих выпусков.
-- Перед пушем: `gitleaks git .` и `python3 <хаб>/tools/privacy-grep.py .` (CI гоняет оба job'а `validate` и `gitleaks`).
+- Перед пушем: `gitleaks git .` и `python3 <хаб>/tools/privacy-grep.py .` (CI GitLab из `beCyborg/jadlis-hub` `/ci/plugin-ci.yml` гоняет `validate` и `gitleaks`).
 - Данные Kagi News — CC BY-NC 4.0: атрибуция в футере выпуска обязательна, из шаблонов её не убирать.
 
 ## Разработка
@@ -38,5 +38,5 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 - `scripts/fetch_kagi_api.py` — только стандартная библиотека Python 3.9+; зависимостей не добавлять.
 - Скилл `swot-news` не задаёт вопросов (`disallowed-tools: AskUserQuestion`) — он ходит по расписанию; вопросы живут только в `swot-news-setup`.
 - Кластер-файлы в основной контекст не читать: агентам передаются пути.
-- Перед коммитом: `claude plugin validate .` и `claude plugin validate .claude-plugin/marketplace.json`.
+- Перед коммитом: `claude plugin validate . --strict` и `claude plugin validate .claude-plugin/marketplace.json`. Этот файл лежит в `.claude/CLAUDE.md`: корневой `CLAUDE.md` валит `--strict`.
 - Язык доков — русский (RU-файл первичен) плюс EN; код, идентификаторы и имена скиллов — английский.

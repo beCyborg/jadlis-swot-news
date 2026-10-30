@@ -2,6 +2,19 @@
 
 Формат: [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/), версии — [SemVer](https://semver.org/lang/ru/).
 
+## [3.0.3] — 2026-10-30 — Плагин и каталог на GitLab / Plugin and catalogue on GitLab
+
+### Для человека
+- Плагин и каталог `jadlis` переехали на GitLab: установка через `https://gitlab.com/beCyborg/jadlis-hub.git`.
+- Выпуски, база карточек и конфиг не меняются. Уже поставленный из GitHub плагин работает как раньше.
+
+### For agents
+- Changed: `README.md`, `README.en.md`, `docs/УСТАНОВКА.md` — marketplace URL → `https://gitlab.com/beCyborg/jadlis-hub.git`, issues and repo links → GitLab.
+- Changed: `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` — `homepage`/`repository` → `https://gitlab.com/beCyborg/jadlis-swot-news`; `version` 3.0.2 → 3.0.3.
+- Removed: `.github/workflows/plugin-validate.yml`. Added: `.gitlab-ci.yml` (include `beCyborg/jadlis-hub` `/ci/plugin-ci.yml`).
+- Changed: `CLAUDE.md` → `.claude/CLAUDE.md` (a root `CLAUDE.md` fails `claude plugin validate --strict`); release steps rewritten for GitLab.
+- Migration: none. `origin` is GitLab, the old remote is `github`.
+
 ## [3.0.2] — 2026-09-26 — Обогатитель видит Brave из jadlis-search / Enricher finds Brave from jadlis-search
 
 ### Для человека

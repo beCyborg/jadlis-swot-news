@@ -1,13 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "jadlis-swot-news",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Собирает батч Kagi News, анализирует его параллельными субагентами через призму личного профиля и пишет дельта-выпуск SWOT в Markdown",
   "author": {
     "name": "beCyborg"
   },
-  "homepage": "https://github.com/beCyborg/jadlis-swot-news",
-  "repository": "https://github.com/beCyborg/jadlis-swot-news",
+  "homepage": "https://gitlab.com/beCyborg/jadlis-swot-news",
+  "repository": "https://gitlab.com/beCyborg/jadlis-swot-news",
   "keywords": [
     "news",
     "swot",
