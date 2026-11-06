@@ -6,7 +6,7 @@ The Kagi News sections you picked are read by parallel analysts through a file h
 profile, and the daily note gets only the delta — what appeared, what escalated, what is fading.
 
 ```
-claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub.git
 claude plugin install jadlis-swot-news@jadlis
 ```
 
@@ -66,7 +66,7 @@ First check the interpreter: python3 --version; not found — python --version, 
 If the version is below 3.9, or none of the commands worked, stop and tell me: without Python
 the plugin cannot collect the news.
 Then run exactly these commands, verbatim, shortening nothing:
-1. claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
+1. claude plugin marketplace add https://github.com/beCyborg/jadlis-hub.git
 2. claude plugin install jadlis-swot-news@jadlis
 3. claude plugin list — show me the line about jadlis-swot-news and its version.
 This plugin asks for no keys: the news source is a public API with no key.
@@ -79,7 +79,7 @@ If a command returns an error, stop, show me the output, and do not move to the 
 **b) Commands by hand.**
 
 ```
-claude plugin marketplace add https://gitlab.com/beCyborg/jadlis-hub.git
+claude plugin marketplace add https://github.com/beCyborg/jadlis-hub.git
 claude plugin install jadlis-swot-news@jadlis
 claude plugin list
 ```

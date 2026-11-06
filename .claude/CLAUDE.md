@@ -13,9 +13,9 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Релизы
 
 - Версия живёт только в `.claude-plugin/plugin.json`; бамп — в том же коммите, что и изменение.
-- Тег `jadlis-swot-news--v{X.Y.Z}` (до 3.0.0 — `swot-news--v…`) ставит и пушит в GitLab (`origin`) команда `claude plugin tag . --push`. Старый remote `github` больше не обновляется.
+- Тег `jadlis-swot-news--v{X.Y.Z}` (до 3.0.0 — `swot-news--v…`) ставит и пушит в GitHub (`origin`) команда `claude plugin tag . --push`.
 - `CHANGELOG.md`: `## [X.Y.Z] — ГГГГ-ММ-ДД — <кратко по-русски> / <short EN>`, затем `### Для человека` (≤3 буллета) и `### For agents` (`Added / Changed / Removed / Migration / Breaking`, с путями).
-- После релиза обновить пин в маркетплейсе хаба: в `~/jadlis-hub-gitlab` (ветка `gitlab`) `python3 tools/bump-pin.py jadlis-swot-news jadlis-swot-news--v{X.Y.Z}`, коммит, `git push gitlab gitlab:main`.
+- После релиза обновить пин в маркетплейсе хаба: в `~/jadlis-hub` (ветка `main`) `python3 tools/bump-pin.py jadlis-swot-news jadlis-swot-news--v{X.Y.Z}`, коммит, `git push origin main`.
 - Только patch-forward: никаких force-push, переписывания тегов и релизов.
 
 ## README и доки
@@ -30,7 +30,7 @@ Root-as-plugin репозиторий: сам корень и есть плаг�
 ## Приватность
 
 - В репо нет ключей, почт, телефонов, путей владельца (`/Users/<имя>`) и содержимого чужих выпусков.
-- Перед пушем: `gitleaks git .` и `python3 <хаб>/tools/privacy-grep.py .` (CI GitLab из `beCyborg/jadlis-hub` `/ci/plugin-ci.yml` гоняет `validate` и `gitleaks`).
+- Перед пушем: `gitleaks git .` и `python3 <хаб>/tools/privacy-grep.py .` (CI GitHub — reusable workflow `beCyborg/jadlis-hub/.github/workflows/plugin-ci.yml` — гоняет `validate` и `gitleaks`).
 - Данные Kagi News — CC BY-NC 4.0: атрибуция в футере выпуска обязательна, из шаблонов её не убирать.
 
 ## Разработка
